@@ -19,7 +19,12 @@ async function main() {
         'EUVcwKfGAhY4vRBB1j3JkqJ6YqBCLj2LCSmDhB8Yguw7',
     );
     const token = await umi.rpc.getAsset(publicKey(mint));
-    console.log(token);
+    const resp = await umi.rpc.getAssetsByAuthority({
+        authority: publicKey(token.authorities[0].address),
+        limit: 10,
+        page: 1,
+    });
+    console.log(JSON.stringify(resp, null, 2))
 }
 
 main().then().catch(console.error);
