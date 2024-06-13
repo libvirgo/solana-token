@@ -32,7 +32,9 @@ async function main() {
             page: page,
         });
         for (const item of resp.items) {
-            if (item.content.metadata.symbol === 'MUTANT') {
+            if (
+                item.content.metadata.symbol === token.content.metadata.symbol
+            ) {
                 total += 1;
             }
         }
